@@ -14,56 +14,47 @@ import java.io.InputStream;
 import java.util.Set;
 
 public class NoTimeFixResourcePack implements IResourcePack {
-
-    protected ModContainer ownerContainer;
-
-    public NoTimeFixResourcePack(ModContainer container) {
-        this.ownerContainer = container;
-    }
-
-    @Override
-    public InputStream getInputStream(ResourceLocation p_110590_1_) throws IOException {
-        InputStream inputstream = getResourceStream(p_110590_1_);
-
-        if (inputstream != null) {
-            return inputstream;
-        } else {
-            throw new FileNotFoundException(p_110590_1_.getResourcePath());
-        }
-    }
-
-    private String getResourcePath(ResourceLocation location) {
-        return "/assets/notimefix/" + location.getResourcePath();
-    }
-
-    private InputStream getResourceStream(ResourceLocation resourceLocation) {
-        InputStream lis = NoTimeFixResourcePack.class.getResourceAsStream(getResourcePath(resourceLocation));
-        return lis;
-    }
-
-    @Override
-    public boolean resourceExists(ResourceLocation p_110589_1_) {
-        return getResourceStream(p_110589_1_) != null;
-    }
-
-    @Override
-    @SuppressWarnings("rawtypes")
-    public Set getResourceDomains() {
-        return ImmutableSet.of("notimefix");
-    }
-
-    @Override
-    public IMetadataSection getPackMetadata(IMetadataSerializer p_135058_1_, String p_135058_2_) throws IOException {
-        return null;
-    }
-
-    @Override
-    public BufferedImage getPackImage() throws IOException {
-        return null;
-    }
-
-    @Override
-    public String getPackName() {
-        return "Default";
-    }
+	
+	protected ModContainer ownerContainer;
+	
+	public NoTimeFixResourcePack(ModContainer container) { this.ownerContainer = container; }
+	
+	@Override
+	public InputStream getInputStream(ResourceLocation p_110590_1_) throws IOException {
+		InputStream inputstream = getResourceStream(p_110590_1_);
+		
+		if (inputstream != null) {
+			return inputstream;
+		}
+		else {
+			throw new FileNotFoundException(p_110590_1_.getResourcePath());
+		}
+	}
+	
+	private String getResourcePath(ResourceLocation location) {
+		return "/assets/notimefix/" + location.getResourcePath();
+	}
+	
+	private InputStream getResourceStream(ResourceLocation resourceLocation) {
+		InputStream lis = NoTimeFixResourcePack.class.getResourceAsStream(getResourcePath(resourceLocation));
+		return lis;
+	}
+	
+	@Override
+	public boolean resourceExists(ResourceLocation p_110589_1_) { return getResourceStream(p_110589_1_) != null; }
+	
+	@Override
+	@SuppressWarnings("rawtypes")
+	public Set getResourceDomains() { return ImmutableSet.of("notimefix"); }
+	
+	@Override
+	public IMetadataSection getPackMetadata(IMetadataSerializer p_135058_1_, String p_135058_2_) throws IOException {
+		return null;
+	}
+	
+	@Override
+	public BufferedImage getPackImage() throws IOException { return null; }
+	
+	@Override
+	public String getPackName() { return "Default"; }
 }
